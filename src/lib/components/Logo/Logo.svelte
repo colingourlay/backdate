@@ -22,5 +22,6 @@
 		display: block;
 		width: 100%;
 		height: auto;
+		fill: currentColor;
 	}
 </style>

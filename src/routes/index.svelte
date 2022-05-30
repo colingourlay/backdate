@@ -17,14 +17,6 @@
 	};
 </script>
 
-<svelte:head>
-	<title>backdate</title>
-	<meta
-		name="description"
-		content="Playdate videos from YouTube, delayed until your season begins"
-	/>
-</svelte:head>
-
 <section>
 	<h1>
 		<Logo />

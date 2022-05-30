@@ -2,6 +2,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import type { Readable } from 'svelte/store';
 	import { InlineCalendar } from 'svelte-calendar';
+	import { PLAYDATE_EPOCH } from '$lib/constants';
 
 	const dispatch = createEventDispatcher();
 
@@ -29,4 +30,4 @@
 	$: $store?.hasChosen && dispatch('selectDate', $store.selected);
 </script>
 
-<InlineCalendar bind:store {theme} />
+<InlineCalendar bind:store {theme} start={PLAYDATE_EPOCH} end={new Date()} />

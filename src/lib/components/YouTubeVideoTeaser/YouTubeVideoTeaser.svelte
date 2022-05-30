@@ -68,6 +68,7 @@
 		margin: 0;
 		font-weight: bold;
 		font-size: 20px;
+		font-size: clamp(18px, 4vw, 24px);
 		line-height: 1.2;
 	}
 

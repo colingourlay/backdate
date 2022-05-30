@@ -28,6 +28,8 @@
 			</li>
 		{/each}
 	</ul>
+{:else}
+	<h1>Loading…</h1>
 {/if}
 
 <style>
@@ -43,5 +45,12 @@
 	li {
 		margin: 0;
 		padding: 0;
+	}
+
+	h1 {
+		margin: auto;
+		text-align: center;
+		font-weight: bold;
+		opacity: 0.125;
 	}
 </style>

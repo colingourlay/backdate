@@ -20,7 +20,7 @@
 				},
 				border: 'var(--screen-black-color)'
 			},
-			width: '90vw',
+			width: '85vw',
 			maxWidth: '420px'
 		}
 	};
@@ -30,4 +30,21 @@
 	$: $store?.hasChosen && dispatch('selectDate', $store.selected);
 </script>
 
-<InlineCalendar bind:store {theme} start={PLAYDATE_EPOCH} end={new Date()} />
+<div>
+	<InlineCalendar bind:store {theme} start={PLAYDATE_EPOCH} end={new Date()} />
+</div>
+
+<style>
+	div :global(.controls) {
+		font-size: 1.25em;
+	}
+
+	div :global(.controls) > :global(*) {
+		height: 25px;
+	}
+
+	div :global(.controls) > :global(*) > :global(i) {
+		width: 11px;
+		height: 11px;
+	}
+</style>

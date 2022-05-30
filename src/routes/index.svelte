@@ -46,7 +46,7 @@
 	}
 
 	h1 + p {
-		margin: 20px 20px 5vh;
+		margin: 20px 0 5vh;
 		line-height: 1.5;
 	}
 </style>

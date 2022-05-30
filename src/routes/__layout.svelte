@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Logo from '$lib/logo/Logo.svelte';
-	import TipJar from '$lib/tip-jar/TipJar.svelte';
+	import Logo from '$lib/components/Logo/Logo.svelte';
+	import TipJar from '$lib/components/TipJar/TipJar.svelte';
 	import '../app.css';
 </script>
 
@@ -34,7 +34,7 @@
 	header a {
 		display: inline-block;
 		max-width: 128px;
-		padding: 20px;
+		padding: 16px 20px;
 		text-decoration: none;
 	}
 
@@ -49,7 +49,8 @@
 		flex-direction: column;
 		padding: 1rem;
 		width: 100%;
-		max-width: 1024px;
+		max-width: 1440px;
+		min-height: calc(100vh - 128px);
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
@@ -59,16 +60,10 @@
 		justify-content: center;
 		align-items: center;
 		gap: 20px;
-		padding: 20px;
+		padding: 16px 20px;
 	}
 
 	footer a {
 		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>

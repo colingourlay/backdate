@@ -22,7 +22,7 @@ export async function get({ params }: Request) {
 	if (!(date instanceof Date)) {
 		return {
 			status: 404
-		};w
+		};
 	}
 
 	return {

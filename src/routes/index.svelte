@@ -4,8 +4,8 @@
 
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import Logo from '$lib/logo/Logo.svelte';
-	import Picker from '$lib/picker/Picker.svelte';
+	import Logo from '$lib/components/Logo/Logo.svelte';
+	import Picker from '$lib/components/Picker/Picker.svelte';
 
 	const onSelectDate = (event: { detail: Date }) => {
 		const date = event.detail;
@@ -29,7 +29,8 @@
 	<h1>
 		<Logo />
 	</h1>
-	<p>Playdate videos from YouTube, delayed until your season begins</p>
+	<p>Avoid Season One spoilers by syncing YouTube content to the day you got your Playdate</p>
+	<h2>When did your Playdate arrive?</h2>
 	<Picker on:selectDate={onSelectDate} />
 </section>
 
@@ -42,9 +43,18 @@
 		flex: 1;
 	}
 
+	section > * {
+		text-align: center;
+	}
+
 	h1 {
 		width: 100%;
 		max-width: 480px;
-		margin-bottom: 0;
+		margin: 0;
+	}
+
+	h1 + p {
+		margin: 20px 20px 5vh;
+		line-height: 1.5;
 	}
 </style>

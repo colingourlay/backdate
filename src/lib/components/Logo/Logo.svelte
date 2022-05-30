@@ -1,5 +1,5 @@
 <script>
-	import VisuallyHidden from '$lib/visually-hidden/VisuallyHidden.svelte';
+	import VisuallyHidden from '$lib/components/VisuallyHidden/VisuallyHidden.svelte';
 </script>
 
 <div>
@@ -19,6 +19,7 @@
 
 <style>
 	svg {
+		display: block;
 		width: 100%;
 		height: auto;
 	}

@@ -28,14 +28,13 @@
 	header {
 		display: flex;
 		justify-content: space-between;
-	}
-
-	header > div {
-		padding: 10px;
+		gap: 20px;
 	}
 
 	header a {
-		font-size: 24px;
+		display: inline-block;
+		max-width: 128px;
+		padding: 20px;
 		text-decoration: none;
 	}
 

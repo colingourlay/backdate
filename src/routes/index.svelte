@@ -44,7 +44,7 @@
 
 	h1 {
 		width: 100%;
-		font-size: 72px;
+		max-width: 480px;
 		margin-bottom: 0;
 	}
 </style>

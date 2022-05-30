@@ -1,19 +1,49 @@
 <script lang="ts">
-	import Header from '$lib/header/Header.svelte';
+	import { page } from '$app/stores';
+	import Logo from '$lib/logo/Logo.svelte';
+	import TipJar from '$lib/tip-jar/TipJar.svelte';
 	import '../app.css';
 </script>
 
-<Header />
-
+{#if $page.url.pathname !== '/'}
+	<header>
+		<div>
+			<a href="/">
+				<Logo />
+			</a>
+		</div>
+		<div />
+	</header>
+{/if}
 <main>
 	<slot />
 </main>
 
 <footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	<div>By <a href="https://colin-gourlay.com/">Colin Gourlay</a></div>
+	<TipJar />
 </footer>
 
 <style>
+	header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	header > div {
+		padding: 10px;
+	}
+
+	header a {
+		font-size: 24px;
+		text-decoration: none;
+	}
+
+	header a:hover,
+	header a:active {
+		text-decoration: none;
+	}
+
 	main {
 		flex: 1;
 		display: flex;
@@ -27,10 +57,10 @@
 
 	footer {
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 40px;
+		gap: 20px;
+		padding: 20px;
 	}
 
 	footer a {

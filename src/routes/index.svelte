@@ -3,31 +3,34 @@
 </script>
 
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+	import { goto } from '$app/navigation';
+	import Logo from '$lib/logo/Logo.svelte';
+	import Picker from '$lib/picker/Picker.svelte';
+
+	const onSelectDate = (event: { detail: Date }) => {
+		const date = event.detail;
+		const year = date.getFullYear();
+		const month = String(date.getMonth() + 1).padStart(2, '0');
+		const day = String(date.getDate()).padStart(2, '0');
+
+		goto(`/${year}-${month}-${day}/`);
+	};
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>backdate</title>
+	<meta
+		name="description"
+		content="Playdate videos from YouTube, delayed until your season begins"
+	/>
 </svelte:head>
 
 <section>
 	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
+		<Logo />
 	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+	<p>Playdate videos from YouTube, delayed until your season begins</p>
+	<Picker on:selectDate={onSelectDate} />
 </section>
 
 <style>
@@ -41,20 +44,7 @@
 
 	h1 {
 		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+		font-size: 72px;
+		margin-bottom: 0;
 	}
 </style>

@@ -3,11 +3,15 @@
 	import type { ContentAPIResponseData, YouTubeVideoMeta } from '$lib/constants';
 	import { getItems } from '$lib/utils/content';
 	import { getDateDaysSincePlaydateEpoch } from '$lib/utils/time';
+	import Button from '$lib/components/Button/Button.svelte';
 	import YouTubeVideoTeaser from '$lib/components/YouTubeVideoTeaser/YouTubeVideoTeaser.svelte';
 
 	export let date: string;
 
 	let items: YouTubeVideoMeta[];
+	let hasLoadingTakenTooLong = false;
+
+	setTimeout(() => (hasLoadingTakenTooLong = true), 5000);
 
 	$: days = getDateDaysSincePlaydateEpoch(new Date(date));
 
@@ -28,6 +32,11 @@
 			</li>
 		{/each}
 	</ul>
+{:else if hasLoadingTakenTooLong}
+	<div>
+		<p>Sorry, loading is taking a while.</p>
+		<Button on:click={() => window.location.reload()}>Try Again</Button>
+	</div>
 {:else}
 	<h1>Loading…</h1>
 {/if}
@@ -52,5 +61,9 @@
 		text-align: center;
 		font-weight: bold;
 		opacity: 0.125;
+	}
+
+	div {
+		margin: auto;
 	}
 </style>

@@ -1,14 +1,12 @@
 <script lang="ts">
+	import { offsetDateByDays } from '$lib/utils/time';
+
 	export let id: string;
 	export let title: string;
 	export let date: Date;
 	export let offset: number = 0;
 
-	$: backDate = (() => {
-		const backDate = new Date(date.valueOf());
-		backDate.setDate(backDate.getDate() + Math.max(0, offset));
-		return backDate;
-	})();
+	$: backDate = offsetDateByDays(date, Math.max(0, offset));
 
 	let hasLoaded = false;
 </script>

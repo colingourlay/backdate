@@ -7,3 +7,10 @@ export const getDateDaysSincePlaydateEpoch = (date: Date) => {
 };
 
 export const getCurrentDaysSincePlaydateEpoch = () => getDateDaysSincePlaydateEpoch(new Date());
+
+export const offsetDateByDays = (date: Date, numDays: number) => {
+	const backDate = new Date(date.valueOf());
+
+	backDate.setDate(backDate.getDate() + numDays);
+	return backDate;
+};

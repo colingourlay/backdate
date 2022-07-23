@@ -11,6 +11,15 @@
 	--column-margin-top: 4rem;
 }
 
+@supports (color: color(display-p3 1 1 1 / 1)) {
+    :root {
+		--screen-black-color: color(display-p3 0.192 0.184 0.157);
+		--screen-white-color: color(display-p3 0.694 0.686 0.659);
+		--accent-color: color(display-p3 0.424 0 1 / 1);
+		--background-color: color(display-p3 1 0.784 0.2);
+    }
+}
+
 body {
 	min-height: 100vh;
 	margin: 0;

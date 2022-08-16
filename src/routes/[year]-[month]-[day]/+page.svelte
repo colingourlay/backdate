@@ -5,15 +5,17 @@
 	import { getDateDaysSincePlaydateEpoch } from '$lib/utils/time';
 	import Button from '$lib/components/Button/Button.svelte';
 	import YouTubeVideoTeaser from '$lib/components/YouTubeVideoTeaser/YouTubeVideoTeaser.svelte';
+	import type { PageData } from './$types';
 
-	export let date: string;
+	export let data: PageData;
+
+	$: ({ date } = data);
+	$: days = getDateDaysSincePlaydateEpoch(new Date(date));
 
 	let items: YouTubeVideoMeta[];
 	let hasLoadingTakenTooLong = false;
 
 	setTimeout(() => (hasLoadingTakenTooLong = true), 5000);
-
-	$: days = getDateDaysSincePlaydateEpoch(new Date(date));
 
 	onMount(async () => {
 		const response = await fetch(`/content/${days}`);

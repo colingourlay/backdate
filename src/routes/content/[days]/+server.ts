@@ -1,15 +1,17 @@
+import { error, json } from '@sveltejs/kit';
+import type { ContentAPIResponseData, ContentAPIRecord } from '$lib/constants';
 import { getCurrentDaysSincePlaydateEpoch } from '$lib/utils/time';
+import type { RequestHandler } from './$types';
 
 const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
 const AIRTABLE_TOKEN = import.meta.env.VITE_AIRTABLE_TOKEN;
 const AIRTABLE_BASE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/`;
 
-/** @type {import('./__types/[days]').RequestHandler} */
-export async function get({ params }) {
+export const GET: RequestHandler = async ({ params }) => {
 	const { days: backdateDays } = params;
-	const daysSinceEpoch = getCurrentDaysSincePlaydateEpoch() - backdateDays;
+	const daysSinceEpoch = getCurrentDaysSincePlaydateEpoch() - parseInt(backdateDays, 10);
 
-	let records = [];
+	let records: ContentAPIRecord[] = [];
 	let offset = '';
 	let isDone = false;
 
@@ -30,7 +32,7 @@ export async function get({ params }) {
 		});
 
 		if (dataResponse.ok) {
-			const data = await dataResponse.json();
+			const data = (await dataResponse.json()) as ContentAPIResponseData;
 
 			records = [...records, ...data.records];
 
@@ -44,15 +46,15 @@ export async function get({ params }) {
 		}
 	}
 
-	if (records.length > 0) {
-		return {
-			body: {
-				records
-			}
-		};
+	if (records.length === 0) {
+		return json({
+			records,
+			params
+		});
+		// throw error(500, 'No records to show');
 	}
 
-	return {
-		status: 404
-	};
-}
+	return json({
+		records
+	});
+};

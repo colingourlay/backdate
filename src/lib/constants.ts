@@ -20,6 +20,7 @@ export type ContentAPIRecord = {
 
 export type ContentAPIResponseData = {
 	records: ContentAPIRecord[];
+	offset?: string;
 };
 
 export const PLAYDATE_EPOCH = new Date(2022, 3, 18);
